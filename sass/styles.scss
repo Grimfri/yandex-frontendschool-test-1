@@ -1,0 +1,163 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background: #eeeeee;
+}
+.container{
+  max-width:750px;
+  margin: 0 auto;
+}
+
+.achievements{
+  margin-top: 20px;
+  background: #fff;
+  padding: 15px;;
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.1);
+  &__title{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  &__list{
+
+  }
+}
+.achievements-list{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  counter-reset: achievement;
+  background: #fff;
+  &__element{
+    list-style: none;
+    margin: 20px;
+    background: inherit;
+  }
+}
+
+$module: 'achievement';
+.#{$module}{
+  $height: 100px;
+  $width: 100px;
+
+  $border-width:5px;
+
+  $color-blue:#89b8cf;
+  $color-purple:#b09eb7;
+  $color-yellow:#f2b22e;
+
+  height:$height;
+  width:$width;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: inherit;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: $border-width;
+
+  &--count{
+    position: relative;
+    .#{$module}__image{
+      z-index:3;
+      &:after{
+        content: counter(achievement);
+        counter-increment: achievement;
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        line-height: 1;
+
+        height:40px - $border-width*2;
+        width:40px - $border-width*2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: Arial, sans-serif;
+        font-size: 19px;
+        font-weight: bold;
+        border-radius: 50%;
+        z-index:3;
+      }
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      line-height: 1;
+
+      height:40px - $border-width*2;
+      width:40px - $border-width*2;
+
+      background: inherit;
+      border-radius: 50%;
+      z-index:2;
+    }
+    &:before{
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      bottom: -$border-width - 2px;
+      right:  -$border-width - 2px;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-image: linear-gradient(rgba(255,0,0,0) 45%, #000 45%);
+      transform: rotate(-46deg) scaleY(0.95);
+
+    }
+  }
+
+  &--blue{
+    color: $color-blue;
+    border-color:$color-blue;
+    &:before{
+      background-image: linear-gradient(transparent 45%, $color-blue 45%);
+    }
+  }
+  &--purple{
+    color: $color-purple;
+    border-color:$color-purple;
+    &:before{
+      background-image: linear-gradient(transparent 45%, $color-purple 45%);
+    }
+  }
+  &--yellow{
+    color: $color-yellow;
+    border-color:$color-yellow;
+    &:before{
+      background-image: linear-gradient(transparent 45%, $color-yellow 45%);
+    }
+  }
+
+  &__image{
+    height: $height - $border-width*2;
+    width: $height - $border-width*2;
+    background: inherit;
+    border-radius: 50%;
+    z-index:1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >*{
+      max-height: $height - 35px;
+      max-width: $width - 35px;
+      position: relative;
+      z-index:3;
+    }
+  }
+}

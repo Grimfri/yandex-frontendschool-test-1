@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background: #eeeeee; }
+
+.container {
+  max-width: 750px;
+  margin: 0 auto; }
+
+.achievements {
+  margin-top: 20px;
+  background: #fff;
+  padding: 15px;
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.1); }
+  .achievements__title {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px 0; }
+
+.achievements-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  counter-reset: achievement;
+  background: #fff; }
+  .achievements-list__element {
+    list-style: none;
+    margin: 20px;
+    background: inherit; }
+
+.achievement {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: inherit;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 5px; }
+  .achievement--count {
+    position: relative; }
+    .achievement--count .achievement__image {
+      z-index: 3; }
+      .achievement--count .achievement__image:after {
+        content: counter(achievement);
+        counter-increment: achievement;
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        line-height: 1;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        font-size: 19px;
+        font-weight: bold;
+        border-radius: 50%;
+        z-index: 3; }
+    .achievement--count:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      line-height: 1;
+      height: 30px;
+      width: 30px;
+      background: inherit;
+      border-radius: 50%;
+      z-index: 2; }
+    .achievement--count:before {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      bottom: -7px;
+      right: -7px;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-image: linear-gradient(rgba(255, 0, 0, 0) 45%, #000 45%);
+      transform: rotate(-46deg) scaleY(0.95); }
+  .achievement--blue {
+    color: #89b8cf;
+    border-color: #89b8cf; }
+    .achievement--blue:before {
+      background-image: linear-gradient(transparent 45%, #89b8cf 45%); }
+  .achievement--purple {
+    color: #b09eb7;
+    border-color: #b09eb7; }
+    .achievement--purple:before {
+      background-image: linear-gradient(transparent 45%, #b09eb7 45%); }
+  .achievement--yellow {
+    color: #f2b22e;
+    border-color: #f2b22e; }
+    .achievement--yellow:before {
+      background-image: linear-gradient(transparent 45%, #f2b22e 45%); }
+  .achievement__image {
+    height: 90px;
+    width: 90px;
+    background: inherit;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .achievement__image > * {
+      max-height: 65px;
+      max-width: 65px;
+      position: relative;
+      z-index: 3; }
